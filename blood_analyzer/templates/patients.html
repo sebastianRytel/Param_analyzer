@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container" style="padding:10px">
+        <div class="card">
+            <div class="card-header">
+                  Click on patient ID to get the table showing patient blood results.
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    {% for patient in patients %}
+                            <div class="col-md-4">
+                                <form method="POST" action="tables">
+                                    <div class="d-grid gap-2 col-6 mx-auto" role="button" style="padding: 5px">
+                                        <button name="patient" type="submit"
+                                                class="button"
+                                                value="{{ patient }}">{{ patient }}</button>
+                                    </div>
+                                </form>
+                            </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,142 @@
+.alert-danger{
+    background-color: red;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
+.alert-success{
+    background-color: #7CFC00;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
+body {
+    background-image: url("back_1.jpeg");
+    background-size: 100%;
+}
+
+.button{
+    background-color: #F08080;
+    border: white;
+    color: white;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 8px 20px;
+}
+
+.container {
+    padding: 10px;
+
+}
+
+.card {
+    padding: 10px;
+    border-radius: 15px;
+
+}
+
+.card-block{
+    padding: 10px 20px;
+    text-align: center;
+
+}
+
+.card-header{
+    background-color: #F08080;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.card-header:first-child {
+    border-radius: 10px;
+}
+
+.cell__low{
+    background-color: #DC143C !important;
+    font-weight: bold;
+}
+
+.cell__high{
+    background-color: #4B0082 !important;
+    color: white;
+}
+
+.cell__normal{
+    background-color: #FFB6C1 !important;
+}
+
+.cell__none{
+    background-color: #C0C0C0 !important;
+}
+
+.cell__white{
+    background-color: white !important;
+}
+
+.cell__low, .cell__high, .cell__normal, .cell__none, .cell__white{
+    border: 1px solid black;
+}
+
+
+.form-group{
+    padding:5px;
+}
+
+.header{
+    text-align: center;
+    border: 1px solid black;
+}
+
+.header_cell{
+    border: 1px solid black;
+}
+
+nav {
+    font-weight: bold;
+    background-color: #F08080;
+    font-size: 20px;
+    color: black;
+
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.page {
+    padding: 10px;
+}
+
+.row {
+    padding:10px;
+    width:90%; margin:auto
+}
+
+.table {
+    border-spacing: 0;
+    background-color: #f5f5f5;
+    border: 1px solid black;
+    table-layout:fixed;
+    width: 100%;
+    word-wrap:break-word;
+    padding: 10px;
+}
+
+.table_row{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.right {
+  margin-left: auto!important;
+}

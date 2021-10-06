@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content%}
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Please enter your e-mail to reset your password
+            </div>
+            <div class="card-block">
+                <form method="POST" action = "">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <div class="form-group">
+                            {{ form.email.label(class="form-control-label") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span> {{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                            {% else %}
+                                {{ form.email(class="form-control form control-lg") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="button") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

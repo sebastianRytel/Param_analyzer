@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  blood-analyzer:
+    build: .
+    environment:
+      FLASK_DEBUG: 0
+      FLASK_APP: blood_analyzer
+    ports:
+      - "5000:5000"
+    entrypoint:
+      - flask
+      - run
+      - --host=0.0.0.0
+

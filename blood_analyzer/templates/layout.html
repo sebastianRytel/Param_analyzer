@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/style.css">
+        {% if title %}
+            <title>Blood analyzer - {{ title }}</title>
+        {% else %}
+            <title>Blood analyzer</title>
+        {% endif %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar navbar-light">
+          <div class="container-fluid">
+            <a class="navbar-brand mr-4" href="/" style="color:#4B0082; font-size:30px">
+                <img
+                        src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/60/000000/external-blood-test-medical-kiranshastry-solid-kiranshastry-1.png"/>
+                Blood Results Analyzer
+            </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#bdNavbar" aria-controls="bdNavbar"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="navbar-collapse collapse" id="bdNavbar">
+                {% if current_user.is_authenticated %}
+                <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2" href="{{ url_for('server.home') }}">
+                        <img src="https://img.icons8.com/ios-glyphs/30/000000/home.png"/>
+                        Home</a>
+                    </li>
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2"
+                           href="{{ url_for('server.patients') }}">
+                        <img src="https://img.icons8.com/material-rounded/30/000000/list.png"/>
+                        Patient Lists</a>
+                    </li>
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2" href="{{ url_for('server.upload') }}">
+                        <img
+                                src="https://img.icons8.com/material-outlined/30/000000/upload--v1.png"/>
+                        Upload file</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2" href="{{ url_for('server.logout') }}">
+                        <img
+                                src="https://img.icons8.com/external-sbts2018-solid-sbts2018/30/000000/external-logout-social-media-sbts2018-solid-sbts2018.png"/>
+                        Log Out</a>
+                    </li>
+                </ul>
+                {% else %}
+                <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2"
+                           href="{{ url_for('server.login') }}">
+                        <img src="https://img.icons8.com/ios-filled/30/000000/enter-2.png"/>
+                        Log In</a>
+                    </li>
+                    <li class="nav-item col-6 col-md-auto">
+                        <a class="nav-link p-2"
+                           href="{{ url_for('server.register') }}">
+                        <img src="https://img.icons8.com/ios-filled/30/000000/add-user-male.png"/>
+                        Register</a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+          </div>
+        </nav>
+        <div class="main" style="margin-top: 100px">
+        {% block content %}{% endblock %}
+
+        </div>
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="'alert alert-{{ category }}">
+                             {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+<!--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>-->
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--        &lt;!&ndash;-->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    </body>
+

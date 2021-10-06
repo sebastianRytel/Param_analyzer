@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block content%}
+
+<div class="container" style="width:30%; margin:auto">
+    <div class="card">
+        <div class="card-header">
+            <img
+                    src="https://img.icons8.com/external-photo3ideastudio-solid-photo3ideastudio/50/000000/external-personal-information-food-delivery-photo3ideastudio-solid-photo3ideastudio.png"/>
+            Patient data
+        </div>
+        <div class="card-block">
+            <h2>Patient {{patient_id}}</h2>
+            <h2>Patient age: {{age}}</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <img src="https://img.icons8.com/ios-filled/40/000000/test-results.png"/>
+            Patient results
+        </div>
+        <div class="card-block">
+            <table class="table">
+                <tr class="header">
+                    {% for header in headers %}
+                        <th class="header_cell">{{ header }}</th>
+                    {% endfor %}
+                </tr>
+                    {% for row in results %}
+                        <tr class="table_row">{% for parameter, value in row.items() %}
+                                {% if parameter in limits %}
+                                    {% if value==None %}
+                                        <td class="cell__none">{{ value }}</td>
+                                    {% elif value | float() < limits[parameter][0] | float() %}
+                                        <td class="cell__low">{{ value }}</td>
+                                    {% elif value | float() > limits[parameter][1] | float() %}
+                                        <td class="cell__high">{{ value }}</td>
+                                    {% elif limits[parameter][0] <= value | float() <= limits[parameter][1]%}
+                                        <td class="cell__normal">{{ value }}</td>
+                                       {% endif %}
+                                {% else %}
+                                    <td class="cell__white">{{ value }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <img src="https://img.icons8.com/dotty/60/000000/graph.png"/>
+            Click on signature to get the graph showing results in function of time
+        </div>
+            <div class="card-block">
+                <div class="row">
+                    {% for parameter in parameters %}
+                            <div class="col-md-2" style="padding: 5px">
+                                <form method="POST" action="graph">
+                                    <div class="d-grid gap-1 mx-auto" role="button">
+                                        <button name="param" type="submit"
+                                                class="button"
+                                                style="width:170px"
+                                                value="{{ parameter }}, {{patient_id}}, {{age}}">{{
+                                            parameter }}</button>
+                                    </div>
+                                </form>
+                            </div>
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
+</div>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <img src="https://img.icons8.com/ios-filled/50/000000/export-excel.png"/>
+            Click on button to get results in excel file
+        </div>
+            <div class="row text-center">
+                    <form method="POST" action="excel">
+                        <button name="excel" type="submit" class="button"
+                                value="{{ patient_id }} | {{ results }}">EXPORT TO EXCEL</button>
+                    </form>
+            </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content%}
+    <div class="container">
+    <div class="card">
+        <div class="card-header">
+            Welcome on home page
+        </div>
+        <div class="column text-center">
+            <div class="card-block">
+                <h1> Dr. {{ current_user.username }}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+              Upload a PDF file
+        </div>
+        <div class="row">
+            <form method="POST" action="/upload" enctype="multipart/form-data">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="file" class="form-control" name="pdf" id="pdf">
+                  <button type="submit" class="button">Upload</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        <div class="row text-center">
+            <form method="POST" action="upload">
+                <button name="analyze" type="submit" class="button" value="analyze">Analyze PDF
+                    file</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
