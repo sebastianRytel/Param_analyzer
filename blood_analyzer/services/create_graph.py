@@ -13,12 +13,12 @@ from ..services import BloodResults
 
 
 def plotting_graphs(parameter, patient_id, patient_age) -> Any:
-    """
-    Function creates graphs showing how blood parameter changes in function of time.
+    """Function creates graphs showing how blood parameter changes in function of time.
+
     :param parameter: Blood parameter used for LIMITS definition.
     :param df_series: Dataframe series for specific blood parameter.
     :param units: Blood parameter unit to show in graphs title.
-    :return:
+    :return: Any
     """
     results_particular_parameter = Results.query.filter_by(
         patient_id=patient_id

@@ -18,7 +18,9 @@ def open_parse_write_to_database(file_name: str) -> NoReturn:
     """
     Function initialize extract information on patient instance. Next writes all gathered data in
     database.
+
     :param file_name: name of the file found in uploads folder.
+    :type file_name: str
     :return: None
     """
     PATIENT.extract_information(file_name)
@@ -28,6 +30,7 @@ def open_parse_write_to_database(file_name: str) -> NoReturn:
 def delete_parsed_pdf(path_upload: str, file_name: str) -> NoReturn:
     """
     Function removes PDF file which were parsed.
+
     :return: None
     """
     src_path = path.join(path_upload, file_name)
@@ -39,7 +42,9 @@ def analyze_and_save_to_database(list_of_files) -> NoReturn:
     Function get all files gathered by look_for_pdf function, next if any file is present it
     opens file, parse and write to DB. Next parsed file is moved to different folder. Finally
     blood results attribute is reset.
+
     :return: boolean. It is required to recognize action in routes module.
+    :rtype: None
     """
     for file in list_of_files:
         open_parse_write_to_database(path.join(PATH_UPLOAD, file))
